@@ -39,7 +39,7 @@ readonly PRODUCT_FILE_NAME="EFFECTIVE_ELEGY-$VERSION.txt"
 
 readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
 
-readonly SOURCE_FILES=(
+declare -a SOURCE_FILES=(
   $SOURCE_DIRECTORY/preamble.txt
   $SOURCE_DIRECTORY/body.txt
 )
@@ -60,7 +60,7 @@ fi
 
 echo "Building the licence to file '$PRODUCT_FILE'"
 
-for file in ${SOURCE_FILES[*]}; do
+for file in ${SOURCE_FILES[@]}; do
   echo "Concatenating file '${file}'"
   (cat "${file}"; echo) >> $PRODUCT_FILE
 done
