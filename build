@@ -1,0 +1,70 @@
+#!/bin/sh
+
+# ---------------------------------------------------------------------------- #
+#                         Obliging Ode & Unsung Anthem
+# ---------------------------------------------------------------------------- #
+#
+# This source file is part of the Obliging Ode and Unsung Anthem projects.
+#
+# Copyright (c) 2019 Antti Kivi
+# Licensed under the MIT License
+#
+# ---------------------------------------------------------------------------- #
+
+set -e
+
+readonly VERBOSE_OPTION="--verbose"
+readonly VERBOSE_SHORT_OPTION="-v"
+
+for arg in "$@"; do
+  if [ "$arg" = "$VERBOSE_OPTION" ] \
+      || [ "$arg" = "$VERBOSE_SHORT_OPTION" ]; then
+    set -x
+  fi
+done
+
+readonly VERSION="0.1.0-dev.1"
+readonly NAME="Effective Elegy"
+
+echo "Building $NAME version $VERSION"
+
+readonly SOURCE_DIRECTORY_NAME="src"
+readonly DISTRIBUTION_DIRECTORY_NAME="dist"
+
+readonly ROOT_DIRECTORY="."
+readonly SOURCE_DIRECTORY="$ROOT_DIRECTORY/$SOURCE_DIRECTORY_NAME"
+readonly DISTRIBUTION_DIRECTORY="$ROOT_DIRECTORY/$DISTRIBUTION_DIRECTORY_NAME"
+
+readonly PRODUCT_FILE_NAME="EFFECTIVE_ELEGY-$VERSION.txt"
+
+readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
+
+readonly SOURCE_FILES=(
+  $SOURCE_DIRECTORY/preamble.txt
+  $SOURCE_DIRECTORY/body.txt
+)
+
+if [ ! -d "$DISTRIBUTION_DIRECTORY" ]; then
+  echo "No distribution directory found"
+  echo "Thus, creating directory '$DISTRIBUTION_DIRECTORY'"
+  mkdir $DISTRIBUTION_DIRECTORY
+  echo "Created directory '$DISTRIBUTION_DIRECTORY'"
+fi
+
+if [ -e "$PRODUCT_FILE" ]; then
+  echo "File '$PRODUCT_FILE' already exists"
+  echo "Thus, it'll be deleted before the build is performed"
+  rm $PRODUCT_FILE
+  echo "Deleted file '$PRODUCT_FILE'"
+fi
+
+echo "Building the licence to file '$PRODUCT_FILE'"
+
+for file in ${SOURCE_FILES[*]}; do
+  echo "Concatenating file '${file}'"
+  (cat "${file}"; echo) >> $PRODUCT_FILE
+done
+
+echo "Built the licence to file '$PRODUCT_FILE'"
+echo "The licence is currently the following:\n"
+echo "$(<$PRODUCT_FILE)\n"
