@@ -75,4 +75,5 @@ echo "Built the licence to file '$PRODUCT_FILE'"
 # Print the final licence
 
 echo "The licence is currently the following:\n"
-echo "$(<$PRODUCT_FILE)\n"
+
+cat $PRODUCT_FILE
