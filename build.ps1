@@ -86,6 +86,6 @@ Write-Output "Built the licence to file '$ProductFile'"
 
 # Print the final licence
 
-Write-Output "The licence is currently the following:\n"
+Write-Output "The licence is currently the following:`r`n"
 
 Get-Content $ProductFile | Write-Output
