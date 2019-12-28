@@ -73,10 +73,8 @@ if (Test-Path "$PRODUCT_FILE") {
 
 Write-Output "Building the licence to file '$PRODUCT_FILE'"
 
-foreach ($file in $SOURCE_FILES) {
-  Write-Output "Concatenating file '$file'"
-  Get-Content $file | Set-Content $PRODUCT_FILE
-}
+Write-Output "Concatenating the source files: $SOURCE_FILES"
+Get-Content $SOURCE_FILES | Set-Content $PRODUCT_FILE
 
 Write-Output "Built the licence to file '$PRODUCT_FILE'"
 
