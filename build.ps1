@@ -21,28 +21,28 @@ New-Variable -Name "ROOT_DIRECTORY" -Value "." -Option Constant
 $SourceDirectoryParameters = @{
   Name = "SOURCE_DIRECTORY"
   Value = "$ROOT_DIRECTORY\$SOURCE_DIRECTORY_NAME"
-  Option = Constant
+  Option = "Constant"
 }
 New-Variable @SourceDirectoryParameters
 
 $DistributionDirectoryParameters = @{
   Name = "DISTRIBUTION_DIRECTORY"
   Value = "$ROOT_DIRECTORY\$DISTRIBUTION_DIRECTORY_NAME"
-  Option = Constant
+  Option = "Constant"
 }
 New-Variable @DistributionDirectoryParameters
 
 $ProductFileNameParameters = @{
   Name = "PRODUCT_FILE_NAME"
   Value = "EFFECTIVE_ELEGY-$VERSION.txt"
-  Option = Constant
+  Option = "Constant"
 }
 New-Variable @ProductFileNameParameters
 
 $ProductFileParameters = @{
   Name = "PRODUCT_FILE"
   Value = "$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
-  Option = Constant
+  Option = "Constant"
 }
 New-Variable @ProductFileParameters
 
