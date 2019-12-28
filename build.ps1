@@ -76,9 +76,11 @@ New-Item $ProductFile -ItemType "file"
 for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
   $SourceFile = $SourceFiles[$Index]
   Write-Output "Concatenating file '$SourceFile'"
-  Get-Content $SourceFile | Add-Content $ProductFile
+  $SourceFileContents = Get-Content $SourceFile
   if ($Index -ne ($SourceFiles.Length - 1)) {
-    Add-Content -Path $ProductFile -Value "`r`n"
+    Add-Content -Path $ProductFile -Value "$SourceFileContents`r`n"
+  } else {
+    Add-Content $ProductFile
   }
 }
 
