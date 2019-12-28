@@ -16,7 +16,6 @@ Write-Output "Building $Name version $Version"
 
 New-Variable -Name "SourceDirectoryName" -Value "src" -Option Constant
 New-Variable -Name "DistributionDirectoryName" -Value "dist" -Option Constant
-New-Variable -Name "BuildDirectoryName" -Value "build" -Option Constant
 
 New-Variable -Name "RootDirectory" -Value "." -Option Constant
 $SourceDirectoryParameters = @{
@@ -76,11 +75,9 @@ New-Item $ProductFile -ItemType "file"
 for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
   $SourceFile = $SourceFiles[$Index]
   Write-Output "Concatenating file '$SourceFile'"
-  $SourceFileContents = Get-Content $SourceFile
+  Get-Content $SourceFile | Add-Content $ProductFile
   if ($Index -ne ($SourceFiles.Length - 1)) {
-    Add-Content -Path $ProductFile -Value "$SourceFileContents`r`n"
-  } else {
-    Add-Content -Path $ProductFile -Value $SourceFileContents
+    Add-Content -Path $ProductFile -Value ""
   }
 }
 
