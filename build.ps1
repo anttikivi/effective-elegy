@@ -80,7 +80,7 @@ for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
   if ($Index -ne ($SourceFiles.Length - 1)) {
     Add-Content -Path $ProductFile -Value "$SourceFileContents`r`n"
   } else {
-    Add-Content $ProductFile
+    Add-Content -Path $ProductFile -Value $SourceFileContents
   }
 }
 
