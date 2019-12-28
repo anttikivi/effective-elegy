@@ -77,6 +77,9 @@ for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
   $SourceFile = $SourceFiles[$Index]
   Write-Output "Concatenating file '$SourceFile'"
   Get-Content $SourceFile | Add-Content $ProductFile
+  if ($Index -ne ($SourceFiles.Length - 1)) {
+    Add-Content -Path $ProductFile -Value "\n"
+  }
 }
 
 Write-Output "Built the licence to file '$ProductFile'"
