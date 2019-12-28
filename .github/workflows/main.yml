@@ -16,5 +16,5 @@ jobs:
       run: ./build -v
       if: runner.os == 'Linux'
     - name: Build the licence on Windows
-      run: build
+      run: .\build
       if: runner.os == 'Windows'
