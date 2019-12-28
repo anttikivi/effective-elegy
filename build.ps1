@@ -9,77 +9,77 @@
 #
 # ---------------------------------------------------------------------------- #
 
-New-Variable -Name "VERSION" -Value "0.1.0-dev.1" -Option Constant
-New-Variable -Name "NAME" -Value "Effective Elegy" -Option Constant
+New-Variable -Name "Version" -Value "0.1.0-dev.1" -Option Constant
+New-Variable -Name "Name" -Value "Effective Elegy" -Option Constant
 
-Write-Output "Building $NAME version $VERSION"
+Write-Output "Building $Name version $Version"
 
-New-Variable -Name "SOURCE_DIRECTORY_NAME" -Value "src" -Option Constant
-New-Variable -Name "DISTRIBUTION_DIRECTORY_NAME" -Value "dist" -Option Constant
+New-Variable -Name "SourceDirectoryName" -Value "src" -Option Constant
+New-Variable -Name "DistributionDirectoryName" -Value "dist" -Option Constant
+New-Variable -Name "BuildDirectoryName" -Value "build" -Option Constant
 
-New-Variable -Name "ROOT_DIRECTORY" -Value "." -Option Constant
+New-Variable -Name "RootDirectory" -Value "." -Option Constant
 $SourceDirectoryParameters = @{
-  Name = "SOURCE_DIRECTORY"
-  Value = "$ROOT_DIRECTORY\$SOURCE_DIRECTORY_NAME"
+  Name = "SourceDirectory"
+  Value = "$RootDirectory\$SourceDirectoryName"
   Option = "Constant"
 }
 New-Variable @SourceDirectoryParameters
-
 $DistributionDirectoryParameters = @{
-  Name = "DISTRIBUTION_DIRECTORY"
-  Value = "$ROOT_DIRECTORY\$DISTRIBUTION_DIRECTORY_NAME"
+  Name = "DistributionDirectory"
+  Value = "$RootDirectory\$DistributionDirectoryName"
   Option = "Constant"
 }
 New-Variable @DistributionDirectoryParameters
 
 $ProductFileNameParameters = @{
-  Name = "PRODUCT_FILE_NAME"
-  Value = "EFFECTIVE_ELEGY-$VERSION.txt"
+  Name = "ProductFileName"
+  Value = "EFFECTIVE_ELEGY-$Version.txt"
   Option = "Constant"
 }
 New-Variable @ProductFileNameParameters
 
 $ProductFileParameters = @{
-  Name = "PRODUCT_FILE"
-  Value = "$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
+  Name = "ProductFile"
+  Value = "$DistributionDirectory/$ProductFileName"
   Option = "Constant"
 }
 New-Variable @ProductFileParameters
 
 # Set the source files
 
-New-Variable -Name "SOURCE_FILES" -Option Constant -Value @(
-  "$SOURCE_DIRECTORY/preamble.txt",
-  "$SOURCE_DIRECTORY/body.txt"
+New-Variable -Name "SourceFiles" -Option Constant -Value @(
+  "$SourceDirectory/preamble.txt",
+  "$SourceDirectory/body.txt"
 )
 
 # Check the build directory and destination file
 
-if (-not (Test-Path "$DISTRIBUTION_DIRECTORY")) {
+if (-not (Test-Path "$DistributionDirectory")) {
   Write-Output "No distribution directory found"
-  Write-Output "Thus, creating directory '$DISTRIBUTION_DIRECTORY'"
-  New-Item -Path "$DISTRIBUTION_DIRECTORY" -ItemType "directory"
-  Write-Output "Created directory '$DISTRIBUTION_DIRECTORY'"
+  Write-Output "Thus, creating directory '$DistributionDirectory'"
+  New-Item -Path "$DistributionDirectory" -ItemType "directory"
+  Write-Output "Created directory '$DistributionDirectory'"
 }
 
-if (Test-Path "$PRODUCT_FILE") {
-  Write-Output "File '$PRODUCT_FILE' already exists"
+if (Test-Path "$ProductFile") {
+  Write-Output "File '$ProductFile' already exists"
   Write-Output "Thus, it'll be deleted before the build is performed"
-  Remove-Item $PRODUCT_FILE
-  Write-Output "Deleted file '$PRODUCT_FILE'"
+  Remove-Item $ProductFile
+  Write-Output "Deleted file '$ProductFile'"
 }
 
 # Build the licence
 
-Write-Output "Building the licence to file '$PRODUCT_FILE'"
+Write-Output "Building the licence to file '$ProductFile'"
 
-Write-Output "Concatenating the source files: $SOURCE_FILES"
-Get-Content $SOURCE_FILES | Set-Content $PRODUCT_FILE
+Write-Output "Concatenating the source files: $SourceFiles"
+Get-Content $SourceFiles | Set-Content $ProductFile
 
-Write-Output "Built the licence to file '$PRODUCT_FILE'"
+Write-Output "Built the licence to file '$ProductFile'"
 
 # Print the final licence
 
 Write-Output "The licence is currently the following:\n"
 
-Get-Content $PRODUCT_FILE | Write-Output
+Get-Content $ProductFile | Write-Output
