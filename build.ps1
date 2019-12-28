@@ -74,8 +74,9 @@ Write-Output "Building the licence to file '$ProductFile'"
 New-Item $ProductFile -ItemType "file"
 
 for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
-  Write-Output "Concatenating file '$SourceFiles[$Index]'"
-  Get-Content $SourceFiles[$Index] | Add-Content $ProductFile
+  $SourceFile = $SourceFiles[$Index]
+  Write-Output "Concatenating file '$SourceFile'"
+  Get-Content $SourceFile | Add-Content $ProductFile
 }
 
 Write-Output "Built the licence to file '$ProductFile'"
