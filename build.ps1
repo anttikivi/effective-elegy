@@ -41,16 +41,14 @@ New-Variable @ProductFileNameParameters
 
 $ProductFileParameters = @{
   Name = "ProductFile"
-  Value = "$DistributionDirectory/$ProductFileName"
+  Value = "$DistributionDirectory\$ProductFileName"
   Option = "Constant"
 }
 New-Variable @ProductFileParameters
 
-# Set the source files
-
 New-Variable -Name "SourceFiles" -Option Constant -Value @(
-  "$SourceDirectory/preamble.txt",
-  "$SourceDirectory/body.txt"
+  "$SourceDirectory\preamble.txt",
+  "$SourceDirectory\body.txt"
 )
 
 # Check the build directory and destination file
@@ -73,8 +71,12 @@ if (Test-Path "$ProductFile") {
 
 Write-Output "Building the licence to file '$ProductFile'"
 
-Write-Output "Concatenating the source files: $SourceFiles"
-Get-Content $SourceFiles | Set-Content $ProductFile
+New-Item $ProductFile -ItemType "file"
+
+for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
+  Write-Output "Concatenating file '$SourceFiles[$Index]'"
+  Get-Content $SourceFiles[$Index] | Add-Content $ProductFile
+}
 
 Write-Output "Built the licence to file '$ProductFile'"
 
