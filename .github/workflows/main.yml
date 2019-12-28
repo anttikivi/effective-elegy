@@ -13,8 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the licence on Linux
-      run: ./build -v
+      run: ./util/build -v
       if: runner.os == 'Linux'
     - name: Build the licence on Windows
-      run: .\build
+      run: .\util\build
       if: runner.os == 'Windows'
