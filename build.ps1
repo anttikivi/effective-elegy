@@ -18,7 +18,7 @@ New-Variable -Name "SOURCE_DIRECTORY_NAME" -Value "src" -Option Constant
 New-Variable -Name "DISTRIBUTION_DIRECTORY_NAME" -Value "dist" -Option Constant
 
 New-Variable -Name "ROOT_DIRECTORY" -Value "." -Option Constant
-$SourceDirectoryParameters = ${
+$SourceDirectoryParameters = @{
   Name = "SOURCE_DIRECTORY"
   Value = "$ROOT_DIRECTORY\$SOURCE_DIRECTORY_NAME"
   Option = Constant
