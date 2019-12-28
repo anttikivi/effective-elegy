@@ -8,9 +8,13 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
     strategy:
       matrix:
-        runs-on: [ubuntu-latest]
+        runs-on: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build the project
+    - name: Build the licence on Linux
       run: ./build -v
+      if: runner.os == 'Linux'
+    - name: Build the licence on Windows
+      run: build
+      if: runner.os == 'Windows'
