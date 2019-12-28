@@ -66,8 +66,8 @@ fi
 echo "Building the licence to file '$PRODUCT_FILE'"
 
 for file in $SOURCE_FILES; do
-  echo "Concatenating file '${file}'"
-  (cat "${file}"; echo) >> $PRODUCT_FILE
+  echo "Concatenating file '$file'"
+  (cat "$file"; echo) >> $PRODUCT_FILE
 done
 
 echo "Built the licence to file '$PRODUCT_FILE'"
