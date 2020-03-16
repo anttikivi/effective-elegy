@@ -2,7 +2,7 @@
 
 ![](https://github.com/anttikivi/effective-elegy/workflows/Main%20workflow/badge.svg)
 
-Effective Elegy is the licence-to-be of [Unsung Anthem](https://github.com/anttikivi/unsung-anthem) and [Obliging Ode](https://github.com/anttikivi/unsung-anthem). It’s designed to be simple but for simple proprietary uses. It still takes into account the fact that the source code of the projects is freely available.
+Effective Elegy is the licence-to-be of [Unsung Anthem](https://github.com/anttikivi/unsung-anthem) and [Obliging Ode](https://github.com/anttikivi/unsung-anthem). It’s designed to be simple but for proprietary use. It still takes into account the fact that the source code of the projects is freely available.
 
 ## Contribute
 
