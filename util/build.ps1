@@ -49,7 +49,8 @@ New-Variable @ProductFileParameters
 
 New-Variable -Name "SourceFiles" -Option Constant -Value @(
   "$SourceDirectory\preamble.txt",
-  "$SourceDirectory\body.txt"
+  "$SourceDirectory\body.txt",
+  "$SourceDirectory\warranty.txt"
 )
 
 # Check the build directory and destination file
