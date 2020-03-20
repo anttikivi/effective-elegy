@@ -14,6 +14,8 @@
 New-Variable -Name "Version" -Value "0.1.0-dev.1" -Option Constant
 New-Variable -Name "Name" -Value "Effective Elegy" -Option Constant
 
+Write-Output "Running the PowerShell build script of $Name"
+
 Write-Output "Building $Name version $Version"
 
 New-Variable -Name "SourceDirectoryName" -Value "src" -Option Constant

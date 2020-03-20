@@ -26,6 +26,8 @@ done
 readonly VERSION="0.1.0-dev.1"
 readonly NAME="Effective Elegy"
 
+echo "Running the build script of $NAME"
+
 echo "Building $NAME version $VERSION"
 
 readonly SOURCE_DIRECTORY_NAME="src"
