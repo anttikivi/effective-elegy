@@ -72,9 +72,12 @@ cd $DISTRIBUTION_DIRECTORY
 case "$OSTYPE" in
   "darwin"*)
     sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
-    rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION" ;;
+    rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
+    sed -i "" -e "$ d" $PRODUCT_FILE_NAME ;;
+
   *)
-    sed -i "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME ;;
+    sed -i "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+    sed -i "$ d" $PRODUCT_FILE_NAME ;;
 esac
 
 cd ..
@@ -86,3 +89,7 @@ echo "Built the licence to file '$PRODUCT_FILE'"
 echo "The licence is currently the following:\n"
 
 cat $PRODUCT_FILE
+
+# Print one empty line to make the shell output look better
+
+echo ""
