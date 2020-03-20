@@ -31,6 +31,8 @@ readonly PRODUCT_FILE_NAME="effective-elegy-$VERSION.txt"
 
 readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
 
+readonly BACKUP_EXTENSION=".tmp"
+
 # Set the source files using a workaround
 
 SOURCE_FILES=""
@@ -65,7 +67,8 @@ done
 
 cd $DISTRIBUTION_DIRECTORY
 
-sed -i "" -- "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+sed -i "$BACKUP_EXTENSION" "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
 
 cd ..
 
