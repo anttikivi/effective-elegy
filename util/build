@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# ---------------------------------------------------------------------------- #
+#                         Obliging Ode & Unsung Anthem
+# ---------------------------------------------------------------------------- #
+#
+# This source file is part of the Obliging Ode and Unsung Anthem projects.
+#
+# Copyright (c) 2019 Antti Kivi
+# Licensed under the MIT License
+#
+# ---------------------------------------------------------------------------- #
+
+set -e
+
+readonly VERSION="$(cat ${0%/*}/elegy-version)"
+readonly NAME="Effective Elegy"
+
+echo "Running the build script of $NAME"
+
+echo "Building $NAME version $VERSION"
+
+readonly SOURCE_DIRECTORY_NAME="src"
+readonly DISTRIBUTION_DIRECTORY_NAME="dist"
+
+readonly ROOT_DIRECTORY="."
+readonly SOURCE_DIRECTORY="$ROOT_DIRECTORY/$SOURCE_DIRECTORY_NAME"
+readonly DISTRIBUTION_DIRECTORY="$ROOT_DIRECTORY/$DISTRIBUTION_DIRECTORY_NAME"
+
+readonly PRODUCT_FILE_NAME="EFFECTIVE_ELEGY-$VERSION.txt"
+
+readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
+
+# Set the source files using a workaround
+
+SOURCE_FILES=""
+SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/preamble.txt"
+SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/body.txt"
+SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/warranty.txt"
+
+# Check the build directory and destination file
+
+if [ ! -d "$DISTRIBUTION_DIRECTORY" ]; then
+  echo "No distribution directory found"
+  echo "Thus, creating directory '$DISTRIBUTION_DIRECTORY'"
+  mkdir $DISTRIBUTION_DIRECTORY
+  echo "Created directory '$DISTRIBUTION_DIRECTORY'"
+fi
+
+if [ -e "$PRODUCT_FILE" ]; then
+  echo "File '$PRODUCT_FILE' already exists"
+  echo "Thus, it'll be deleted before the build is performed"
+  rm $PRODUCT_FILE
+  echo "Deleted file '$PRODUCT_FILE'"
+fi
+
+# Build the licence
+
+echo "Building the licence to file '$PRODUCT_FILE'"
+
+for file in $SOURCE_FILES; do
+  echo "Concatenating file '$file'"
+  (cat "$file"; echo) >> $PRODUCT_FILE
+done
+
+cd $DISTRIBUTION_DIRECTORY
+
+sed -i -- "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+
+cd ..
+
+echo "Built the licence to file '$PRODUCT_FILE'"
+
+# Print the final licence
+
+echo "The licence is currently the following:\n"
+
+cat $PRODUCT_FILE
