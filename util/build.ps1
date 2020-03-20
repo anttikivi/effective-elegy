@@ -11,7 +11,7 @@
 #
 # ---------------------------------------------------------------------------- #
 
-New-Variable -Name "Version" (Get-Content -Path (Join-Path $PSScriptRoot "elegy-version")) -Option Constant
+New-Variable -Name "Version" (Get-Content -Path (Join-Path $PSScriptRoot "version.txt")) -Option Constant
 New-Variable -Name "Name" -Value "Effective Elegy" -Option Constant
 
 Write-Output "Running the PowerShell build script of $Name"
@@ -37,7 +37,7 @@ New-Variable @DistributionDirectoryParameters
 
 $ProductFileNameParameters = @{
   Name = "ProductFileName"
-  Value = "EFFECTIVE_ELEGY-$Version.txt"
+  Value = "effective-elegy-$Version.txt"
   Option = "Constant"
 }
 New-Variable @ProductFileNameParameters

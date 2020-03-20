@@ -13,7 +13,7 @@
 
 set -e
 
-readonly VERSION="$(cat ${0%/*}/elegy-version)"
+readonly VERSION="$(cat ${0%/*}/version.txt)"
 readonly NAME="Effective Elegy"
 
 echo "Running the build script of $NAME"
@@ -27,9 +27,11 @@ readonly ROOT_DIRECTORY="."
 readonly SOURCE_DIRECTORY="$ROOT_DIRECTORY/$SOURCE_DIRECTORY_NAME"
 readonly DISTRIBUTION_DIRECTORY="$ROOT_DIRECTORY/$DISTRIBUTION_DIRECTORY_NAME"
 
-readonly PRODUCT_FILE_NAME="EFFECTIVE_ELEGY-$VERSION.txt"
+readonly PRODUCT_FILE_NAME="effective-elegy-$VERSION.txt"
 
 readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
+
+readonly BACKUP_EXTENSION=".tmp"
 
 # Set the source files using a workaround
 
@@ -65,7 +67,8 @@ done
 
 cd $DISTRIBUTION_DIRECTORY
 
-sed -i -- "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+sed -i "$BACKUP_EXTENSION" "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
 
 cd ..
 
