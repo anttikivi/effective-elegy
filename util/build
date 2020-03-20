@@ -65,7 +65,7 @@ done
 
 cd $DISTRIBUTION_DIRECTORY
 
-sed -i "" "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+sed -i "" -- "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
 
 cd ..
 
