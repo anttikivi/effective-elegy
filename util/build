@@ -69,12 +69,13 @@ done
 
 cd $DISTRIBUTION_DIRECTORY
 
-if [ "$OSTYPE" = "darwin"* ]; then
-  sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
-  rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
-else
-  sed -i "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
-fi
+case "$OSTYPE" in
+  "darwin"*)
+    sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+    rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION" ;;
+  *)
+    sed -i "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME ;;
+esac
 
 cd ..
 
