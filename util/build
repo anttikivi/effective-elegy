@@ -68,24 +68,20 @@ for file in $SOURCE_FILES; do
   (cat "$file"; echo) >> $TEMPORARY_FILE
 done
 
-cd $DISTRIBUTION_DIRECTORY
-
 case "$OSTYPE" in
   "darwin"*)
-    sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $TEMPORARY_FILE_NAME
-    rm "$TEMPORARY_FILE_NAME$BACKUP_EXTENSION"
-    sed -i "" -e "$ d" $TEMPORARY_FILE_NAME ;;
+    sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $TEMPORARY_FILE
+    rm "$TEMPORARY_FILE$BACKUP_EXTENSION"
+    sed -i "" -e "$ d" $TEMPORARY_FILE ;;
 
   *)
-    sed -i "s/{VERSION}/$VERSION/g" $TEMPORARY_FILE_NAME
-    sed -i "$ d" $TEMPORARY_FILE_NAME ;;
+    sed -i "s/{VERSION}/$VERSION/g" $TEMPORARY_FILE
+    sed -i "$ d" $TEMPORARY_FILE ;;
 esac
 
-fold -w 80 -s $TEMPORARY_FILE_NAME > $PRODUCT_FILE_NAME
+fold -w 80 -s $TEMPORARY_FILE > $PRODUCT_FILE
 
-rm $TEMPORARY_FILE_NAME
-
-cd ..
+rm $TEMPORARY_FILE
 
 echo "Built the licence to file '$PRODUCT_FILE'"
 
