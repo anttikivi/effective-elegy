@@ -20,6 +20,8 @@ echo "Running the build script of $NAME"
 
 echo "Building $NAME version $VERSION"
 
+echo "The type of the current OS is $OSTYPE"
+
 readonly SOURCE_DIRECTORY_NAME="src"
 readonly DISTRIBUTION_DIRECTORY_NAME="dist"
 
@@ -68,8 +70,6 @@ done
 cd $DISTRIBUTION_DIRECTORY
 
 if [ "$OSTYPE" = "darwin"* ]; then
-  echo "Running a slightly different replacement command as the detected OS \
-is $OSTYPE"
   sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
   rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
 else
