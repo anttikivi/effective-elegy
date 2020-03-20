@@ -26,7 +26,7 @@ First clone the GitHub repository of Effective Elegy.
 
     git clone https://github.com/anttikivi/effective-elegy.git
 
-**Via SSH:** If you’re planning on regularly making direct commits, cloning over SSH may provide a better experience (it requires [uploading SSH keys to GitHub](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/))
+**Via SSH:** If you’re planning on regularly making direct commits, cloning over SSH may provide a better experience (it requires [uploading SSH keys to GitHub](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)).
 
     git clone git@github.com:anttikivi/effective-elegy.git
 
