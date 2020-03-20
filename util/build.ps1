@@ -11,7 +11,7 @@
 #
 # ---------------------------------------------------------------------------- #
 
-New-Variable -Name "Version" -Value "0.1.0-dev.1" -Option Constant
+New-Variable -Name "Version" (Get-Content -Path (Join-Path $PSScriptRoot "elegy-version")) -Option Constant
 New-Variable -Name "Name" -Value "Effective Elegy" -Option Constant
 
 Write-Output "Running the PowerShell build script of $Name"
@@ -85,6 +85,8 @@ for ($Index = 0; $Index -lt $SourceFiles.Length; $Index++) {
     Add-Content -Path $ProductFile -Value ""
   }
 }
+
+(Get-Content $ProductFile).replace("{VERSION}", "$Version") | Set-Content $ProductFile
 
 Write-Output "Built the licence to file '$ProductFile'"
 

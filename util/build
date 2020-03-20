@@ -13,7 +13,7 @@
 
 set -e
 
-readonly VERSION="0.1.0-dev.1"
+readonly VERSION="$(cat ${0%/*}/elegy-version)"
 readonly NAME="Effective Elegy"
 
 echo "Running the build script of $NAME"
@@ -62,6 +62,12 @@ for file in $SOURCE_FILES; do
   echo "Concatenating file '$file'"
   (cat "$file"; echo) >> $PRODUCT_FILE
 done
+
+cd $DISTRIBUTION_DIRECTORY
+
+sed -i -- "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
+
+cd ..
 
 echo "Built the licence to file '$PRODUCT_FILE'"
 

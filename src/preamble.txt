@@ -1,3 +1,4 @@
 Effective Elegy Licence
+Version {VERSION}
 
 Copyright (c) [year] [fullname]
