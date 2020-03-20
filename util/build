@@ -13,16 +13,6 @@
 
 set -e
 
-readonly VERBOSE_OPTION="--verbose"
-readonly VERBOSE_SHORT_OPTION="-v"
-
-for arg in "$@"; do
-  if [ "$arg" = "$VERBOSE_OPTION" ] \
-      || [ "$arg" = "$VERBOSE_SHORT_OPTION" ]; then
-    set -x
-  fi
-done
-
 readonly VERSION="0.1.0-dev.1"
 readonly NAME="Effective Elegy"
 
