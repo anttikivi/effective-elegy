@@ -4,7 +4,7 @@
 
 Effective Elegy is the licence-to-be of [Obliging Ode](https://github.com/anttikivi/unsung-anthem) and [Unsung Anthem](https://github.com/anttikivi/unsung-anthem). Its main design goal is to be simple while enabling proprietary use. It makes it possible to have the source code of a program freely available while not open source.
 
-Effective Elegy and its helper script themselves are licensed under [MIT Licence](https://github.com/anttikivi/effective-elegy/blob/develop/LICENCE).
+Effective Elegy and its helper scripts themselves are licensed under [MIT Licence](https://github.com/anttikivi/effective-elegy/blob/develop/LICENCE).
 
 ## Installing
 

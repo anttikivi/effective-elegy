@@ -1,15 +1,7 @@
 #!/bin/sh
 
-# ---------------------------------------------------------------------------- #
-#                         Obliging Ode & Unsung Anthem
-# ---------------------------------------------------------------------------- #
-#
-# This source file is part of the Obliging Ode and Unsung Anthem projects.
-#
-# Copyright (c) 2019 Antti Kivi
+# Copyright (c) 2020 Antti Kivi
 # Licensed under the MIT License
-#
-# ---------------------------------------------------------------------------- #
 
 set -e
 
@@ -20,6 +12,8 @@ echo "Running the build script of $NAME"
 
 echo "Building $NAME version $VERSION"
 
+echo "The type of the current OS is $OSTYPE"
+
 readonly SOURCE_DIRECTORY_NAME="src"
 readonly DISTRIBUTION_DIRECTORY_NAME="dist"
 
@@ -27,8 +21,10 @@ readonly ROOT_DIRECTORY="."
 readonly SOURCE_DIRECTORY="$ROOT_DIRECTORY/$SOURCE_DIRECTORY_NAME"
 readonly DISTRIBUTION_DIRECTORY="$ROOT_DIRECTORY/$DISTRIBUTION_DIRECTORY_NAME"
 
+readonly TEMPORARY_FILE_NAME="tmp.txt"
 readonly PRODUCT_FILE_NAME="effective-elegy-$VERSION.txt"
 
+readonly TEMPORARY_FILE="$DISTRIBUTION_DIRECTORY/$TEMPORARY_FILE_NAME"
 readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
 
 readonly BACKUP_EXTENSION=".tmp"
@@ -56,21 +52,36 @@ if [ -e "$PRODUCT_FILE" ]; then
   echo "Deleted file '$PRODUCT_FILE'"
 fi
 
+if [ -e "$TEMPORARY_FILE" ]; then
+  echo "File '$TEMPORARY_FILE' already exists"
+  echo "Thus, it'll be deleted before the build is performed"
+  rm $TEMPORARY_FILE
+  echo "Deleted file '$TEMPORARY_FILE'"
+fi
+
 # Build the licence
 
 echo "Building the licence to file '$PRODUCT_FILE'"
 
 for file in $SOURCE_FILES; do
   echo "Concatenating file '$file'"
-  (cat "$file"; echo) >> $PRODUCT_FILE
+  (cat "$file"; echo) >> $TEMPORARY_FILE
 done
 
-cd $DISTRIBUTION_DIRECTORY
+case "$OSTYPE" in
+  "darwin"*)
+    sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $TEMPORARY_FILE
+    rm "$TEMPORARY_FILE$BACKUP_EXTENSION"
+    sed -i "" -e "$ d" $TEMPORARY_FILE ;;
 
-sed -i "$BACKUP_EXTENSION" "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
-rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
+  *)
+    sed -i "s/{VERSION}/$VERSION/g" $TEMPORARY_FILE
+    sed -i "$ d" $TEMPORARY_FILE ;;
+esac
 
-cd ..
+fold -w 80 -s $TEMPORARY_FILE > $PRODUCT_FILE
+
+rm $TEMPORARY_FILE
 
 echo "Built the licence to file '$PRODUCT_FILE'"
 
@@ -79,3 +90,7 @@ echo "Built the licence to file '$PRODUCT_FILE'"
 echo "The licence is currently the following:\n"
 
 cat $PRODUCT_FILE
+
+# Print one empty line to make the shell output look better
+
+echo ""

@@ -1,17 +1,14 @@
 #!/usr/bin/env pwsh
 
-# ---------------------------------------------------------------------------- #
-#                         Obliging Ode & Unsung Anthem
-# ---------------------------------------------------------------------------- #
-#
-# This source file is part of the Obliging Ode and Unsung Anthem projects.
-#
-# Copyright (c) 2019 Antti Kivi
+# Copyright (c) 2020 Antti Kivi
 # Licensed under the MIT License
-#
-# ---------------------------------------------------------------------------- #
 
-New-Variable -Name "Version" (Get-Content -Path (Join-Path $PSScriptRoot "version.txt")) -Option Constant
+$VersionParameters = @{
+  Name = "Version"
+  Value = (Get-Content -Path (Join-Path $PSScriptRoot "version.txt"))
+  Option = "Constant"
+}
+New-Variable @VersionParameters
 New-Variable -Name "Name" -Value "Effective Elegy" -Option Constant
 
 Write-Output "Running the PowerShell build script of $Name"
