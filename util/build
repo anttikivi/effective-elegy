@@ -68,6 +68,8 @@ done
 cd $DISTRIBUTION_DIRECTORY
 
 if [ "$OSTYPE" = "darwin"* ]; then
+  echo "Running a slightly different replacement command as the detected OS \
+is $OSTYPE"
   sed -i "$BACKUP_EXTENSION" -e "s/{VERSION}/$VERSION/g" $PRODUCT_FILE_NAME
   rm "$PRODUCT_FILE_NAME$BACKUP_EXTENSION"
 else
