@@ -49,6 +49,7 @@ New-Variable @ProductFileParameters
 New-Variable -Name "SourceFiles" -Option Constant -Value @(
   "$SourceDirectory\preamble.txt",
   "$SourceDirectory\body.txt",
+  "$SourceDirectory\future.txt",
   "$SourceDirectory\warranty.txt"
 )
 
