@@ -3,7 +3,9 @@
 
 @echo on
 
-echo Please note that this script is horribly broken
+echo Please note that this script should not be used in production
+echo The Windows batch file script is for testing only, to compile the ^
+licence, please use the Bourne shell script
 
 set /p version=<%~dp0\version.txt
 set name=Effective Elegy
