@@ -3,6 +3,8 @@
 
 @echo on
 
+echo Please note that this script is horribly broken
+
 set /p version=<%~dp0\version.txt
 set name=Effective Elegy
 
