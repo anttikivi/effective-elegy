@@ -8,16 +8,15 @@ set -e
 readonly VERSION="$(cat ${0%/*}/version.txt)"
 readonly NAME="Effective Elegy"
 
-echo "Running the build script of $NAME"
-
+echo "Running the Bourne shell build script of $NAME"
 echo "Building $NAME version $VERSION"
-
 echo "The type of the current OS is $OSTYPE"
 
 readonly SOURCE_DIRECTORY_NAME="src"
 readonly DISTRIBUTION_DIRECTORY_NAME="dist"
 
 readonly ROOT_DIRECTORY="."
+
 readonly SOURCE_DIRECTORY="$ROOT_DIRECTORY/$SOURCE_DIRECTORY_NAME"
 readonly DISTRIBUTION_DIRECTORY="$ROOT_DIRECTORY/$DISTRIBUTION_DIRECTORY_NAME"
 
@@ -29,7 +28,7 @@ readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
 
 readonly BACKUP_EXTENSION=".tmp"
 
-# Set the source files using a workaround
+# Set the source files.
 
 SOURCE_FILES=""
 SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/preamble.txt"
@@ -37,7 +36,7 @@ SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/body.txt"
 SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/future.txt"
 SOURCE_FILES="$SOURCE_FILES $SOURCE_DIRECTORY/warranty.txt"
 
-# Check the build directory and destination file
+# Check the build directory and destination file.
 
 if [ ! -d "$DISTRIBUTION_DIRECTORY" ]; then
   echo "No distribution directory found"
@@ -60,7 +59,7 @@ if [ -e "$TEMPORARY_FILE" ]; then
   echo "Deleted file '$TEMPORARY_FILE'"
 fi
 
-# Build the licence
+# Build the licence.
 
 echo "Building the licence to file '$PRODUCT_FILE'"
 
@@ -86,12 +85,12 @@ rm $TEMPORARY_FILE
 
 echo "Built the licence to file '$PRODUCT_FILE'"
 
-# Print the final licence
+# Print the final licence.
 
 echo "The licence is currently the following:\n"
 
 cat $PRODUCT_FILE
 
-# Print one empty line to make the shell output look better
+# Print one empty line to make the shell output look better.
 
 echo ""
