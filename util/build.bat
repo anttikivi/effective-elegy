@@ -73,7 +73,7 @@ for /f "delims=" %%i in ('type "%temporary_file%" ^& break ^> "%temporary_file%"
   set line=%%i
   setlocal enabledelayedexpansion
   set line=!line:*]=!
-  if defined line set line=!line:%search%=%replace%!
+  if defined line "set line=!line:%search%=%replace%!"
   >>"%temporary_file%" echo(!line!
   endlocal
 )
