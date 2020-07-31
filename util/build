@@ -5,7 +5,14 @@
 
 set -e
 
-readonly VERSION="$(cat ${0%/*}/version.txt)"
+readonly BACKUP_EXTENSION=".tmp"
+
+readonly VERSION_FILE="${0%/*}/version.txt"
+readonly TEMPORARY_VERSION_FILE="${0%/*}/.tmp-version.txt"
+
+envsubst < $VERSION_FILE > $TEMPORARY_VERSION_FILE
+
+readonly VERSION="$(cat $TEMPORARY_VERSION_FILE)"
 readonly NAME="Effective Elegy"
 
 echo "Running the Bourne shell build script of $NAME"
@@ -25,8 +32,6 @@ readonly PRODUCT_FILE_NAME="effective-elegy-$VERSION.txt"
 
 readonly TEMPORARY_FILE="$DISTRIBUTION_DIRECTORY/$TEMPORARY_FILE_NAME"
 readonly PRODUCT_FILE="$DISTRIBUTION_DIRECTORY/$PRODUCT_FILE_NAME"
-
-readonly BACKUP_EXTENSION=".tmp"
 
 # Set the source files.
 
