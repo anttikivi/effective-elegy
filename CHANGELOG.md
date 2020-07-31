@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 - This changelog file for documenting changes to the project.
 - List of code owners for GitHub.
 
+### Removed
+
+- Windows batch file script for concatenating the licence.
+
 ## [0.5.0] - 2020-03-21
 
 ### Added
