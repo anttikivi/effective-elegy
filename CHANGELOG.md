@@ -10,7 +10,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 - This changelog file for documenting changes to the project.
 - List of code owners for GitHub.
-- Ability to use environment variables in the version of the project.
 
 ### Removed
 
