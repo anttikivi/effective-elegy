@@ -1,4 +1,4 @@
-Hello there&mdash;and thank you for your interest in contributing to Effective Elegy. Please follow the steps below to tell us about your contribution.
+Hello there—and thank you for your interest in contributing to Effective Elegy. Please follow the steps below to tell us about your contribution.
 
 1. Copy the correct template for your contribution:
 - Bug fix: https://bit.ly/elegy-bug-fix
