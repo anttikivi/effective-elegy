@@ -34,7 +34,7 @@ That’s it; you’ll find the built text file in the `dist` directory.
 
 ## Contribute
 
-Contributions to Effective Elegy are welcome and encouraged! There are many ways to [contribute](https://github.com/anttikivi/effective-elegy/blob/develop/CONTRIBUTING.md#how-can-i-contribute) to it. You can find the guidelines for contributing in [CONTRIBUTING](CONTRIBUTING.md).
+Contributions to Effective Elegy are welcome and encouraged! There are many ways to [contribute](CONTRIBUTING.md#how-can-i-contribute) to it. You can find the guidelines for contributing in [CONTRIBUTING](CONTRIBUTING.md).
 
 This project adheres to the Contributor Covenant [Code of Conduct](https://github.com/anttikivi/effective-elegy/blob/develop/CODE_OF_CONDUCT.md). By participating, you’re expected to uphold this code. Please report unacceptable behaviour to antti.kivi@visiosto.fi.
 
