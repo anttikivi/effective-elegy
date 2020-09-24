@@ -13,7 +13,7 @@ jobs:
       LOCAL_VERSION_NUMBER_FILE: build_version.txt
     steps:
     - name: Check out the project
-      uses: actions/checkout@v2.3.2
+      uses: actions/checkout@v2.3.3
     - name: Determine project version
       id: version
       uses: anttikivi/maintain-revision@v0.6.0
