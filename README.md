@@ -22,6 +22,10 @@ First, clone the GitHub repository of Effective Elegy.
 
     git clone git@github.com:anttikivi/effective-elegy.git
 
+**Via GitHub CLI:** If you work chiefly with GitHub, using the official [GitHub CLI](https://cli.github.com) may provide the best experience.
+
+    gh repo clone anttikivi/effective-elegy
+
 After cloning the source, make sure to change to the cloned directory.
 
     cd effective-elegy
