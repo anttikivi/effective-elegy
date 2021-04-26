@@ -19,7 +19,7 @@ jobs:
 
     - name: Determine the project’s version
       id: version
-      uses: anttikivi/maintain-revision@v0.10.1
+      uses: anttikivi/maintain-revision@v0.11.0
       with:
         type: txt
         file: util/version.txt
