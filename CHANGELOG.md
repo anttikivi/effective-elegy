@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 ### Removed
 
 - Windows batch file script for concatenating the licence.
+- Unnecessary community files that are in the [`.github` repository](https://github.com/anttikivi/.github).
 
 ## [0.5.0] - 2020-03-21
 
