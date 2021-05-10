@@ -31,7 +31,7 @@ jobs:
         file: util/version.txt
 
     - name: Replace the project’s version
-      uses: visiosto/replace-value@v0.1.0
+      uses: visiosto/replace-value@v0.2.2
       with:
         file: util/version.txt
         replaced: ${{ steps.version.outputs.package-version }}
