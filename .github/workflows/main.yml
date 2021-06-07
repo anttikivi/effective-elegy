@@ -24,7 +24,7 @@ jobs:
 
     - name: Determine the project’s version
       id: version
-      uses: visiosto/maintain-revision@v0.15.0
+      uses: visiosto/maintain-revision@v0.16.0
       with:
         bucket: ${{ env.REVISION_BUCKET_NAME }}
         type: txt
